@@ -1,0 +1,22 @@
+<div class="video_container">
+    <video #video autoplay loop muted>    
+    </video>
+    <div class="city_container">
+        <h2 *ngIf="data">{{weather.name}} - {{weather.sys.country}}</h2>
+        <form [formGroup]="inputCity" (ngSubmit)="getWeather()">
+            <input placeholder="Buscar ciudad" type="text" formControlName="city" name="city" id="city" #city>
+            <button type="submit">BUSCAR</button>
+            <div *ngIf="data" class="data">
+                <div>
+                    <p>{{weather.main.temp_max}}° / {{weather.main.temp_min}}°</p>                
+                </div>
+                <div>
+                    <p>Sensación térmica: {{weather.main.feels_like}}°</p>                
+                </div>
+                <div>
+                    <p>Humedad: {{weather.main.humidity}}</p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

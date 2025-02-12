@@ -1,0 +1,84 @@
+.video_container{  
+  height: 100vh;     
+  position: relative;
+}    
+
+video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  
+}
+
+.city_container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 500px;
+    border-radius: 18px;
+    backdrop-filter: blur(14px);
+    background-color: rgba(255, 255, 255, 0.2);
+    display: grid;
+    place-content: center;
+}
+
+form{
+  display: grid;
+}
+
+h2{
+  color: white;
+  margin: 0 auto;
+  padding-bottom: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input{
+    border: none;
+    outline: none;
+    border-radius: 18px;
+    width: 250px;
+    height: 2.5em;
+    padding-left: 1em;
+    margin-bottom: 1em;
+}
+
+button{
+  border: 1px solid black;
+  outline: none;
+  border-radius: 18px;
+  width: 125px;
+  height: 2em;
+  background-color: transparent;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+button:hover::after{
+  content: "→";
+  margin-left: .5em;
+  transition: ease all 500ms;
+}
+
+.data{  
+  margin: 1.5em auto;  
+}
+
+.data p{
+  color: white;
+  margin-bottom: 1em;
+}
+
+.data p::after{
+  content: "";
+  margin-right: 1em;
+}
+
+.data div{
+  display: grid;
+  place-content: center;
+}
