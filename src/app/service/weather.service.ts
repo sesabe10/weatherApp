@@ -23,7 +23,7 @@ export class WeatherService {
   getCurrentLocation(latitude: number, longitude: number): Observable<any>{
     return this.https.get<any>(this.uri + "lat=" + latitude + "&lon=" + longitude + "&appid=" + this.id);
   }
-
+  
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occurred!';
     if (error.statusText === 'Not Found') {

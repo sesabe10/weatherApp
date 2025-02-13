@@ -1,3 +1,7 @@
+body{
+  font-family: "Fira Sans", serif;
+}
+
 .video_container{  
   height: 100vh;     
   position: relative;
@@ -65,20 +69,29 @@ button:hover::after{
 }
 
 .data{  
-  margin: 1.5em auto;  
+  margin: 0 auto;  
 }
 
 .data p{
   color: white;
-  margin-bottom: 1em;
+  
+}
+span{
+  margin-bottom: .5em;
+  color: white; 
+  font-size: 1.5rem;  
 }
 
-.data p::after{
-  content: "";
-  margin-right: 1em;
+.mainG > p{
+  text-align: center;
+  color: white;  
+  font-size: 2rem;
+  margin-top: .5em;
 }
 
-.data div{
-  display: grid;
-  place-content: center;
+.description{
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }

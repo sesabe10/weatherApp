@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { WeatherComponent } from './pages/weather/weather.component';
 import { CityComponent } from './components/city/city.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { StringClean } from './helpers/string-clean/string-clean';
 
 
 @NgModule({
@@ -15,8 +14,7 @@ import { StringClean } from './helpers/string-clean/string-clean';
     WeatherComponent,
     CityComponent,
   ],
-  imports: [
-    StringClean,
+  imports: [    
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule

@@ -2,21 +2,23 @@
     <video #video autoplay loop muted>    
     </video>
     <div class="city_container">
-        <h2 *ngIf="data">{{weather.name}} - {{weather.sys.country}}</h2>
+        <h2 *ngIf="show">{{weather.name}} - {{weather.sys.country}}</h2>
         <form [formGroup]="inputCity" (ngSubmit)="getWeather()">
+
             <input placeholder="Buscar ciudad" type="text" formControlName="city" name="city" id="city" #city>
             <button type="submit">BUSCAR</button>
-            <div *ngIf="data" class="data">
-                <div>
-                    <p>{{weather.main.temp_max}}° / {{weather.main.temp_min}}°</p>                
+
+            <div *ngIf="show" class="mainG">
+                <p>{{weather.main.temp | number: '1.0-0'}}°</p>
+                <div class="description">
+                    <img [src]="weatherIconUrl" alt="icon">
+                    <span>{{weather.weather[0].description | titlecase}}</span>
                 </div>
-                <div>
-                    <p>Sensación térmica: {{weather.main.feels_like}}°</p>                
+            </div>   
+            <div *ngIf="show" class="data">                             
+                    <p>Máxima: {{weather.main.temp_max | number: '1.0-0'}}°    
+                      &nbsp; Mímina: {{weather.main.temp_min | number: '1.0-0'}}°</p>                                     
                 </div>
-                <div>
-                    <p>Humedad: {{weather.main.humidity}}</p>
-                </div>
-            </div>
         </form>
     </div>
 </div>

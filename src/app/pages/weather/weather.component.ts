@@ -1,8 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { StringClean } from 'src/app/helpers/string-clean/string-clean';
 import { WeatherData } from 'src/app/interface/weather-data';
 import { WeatherService } from 'src/app/service/weather.service';
+import { environment } from 'src/environment';
 
 @Component({
   selector: 'app-weather',
@@ -10,32 +10,39 @@ import { WeatherService } from 'src/app/service/weather.service';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent {
-  
-  @ViewChild('video', { static: false }) videoElement!: ElementRef; 
 
-  videoUrl: string = 'assets/video/clouds.webm';  
+  @ViewChild('video', { static: false }) videoElement!: ElementRef;
+
+  videoUrl: string = 'assets/video/clouds.webm';
   inputCity: FormGroup;
   weather!: WeatherData;
-  data: boolean = false;
+  show: boolean = false;
+  weatherIconUrl: string = '';
 
-  constructor(private weatherService: WeatherService, private fb: FormBuilder, private clean: StringClean) {    
+  constructor(private weatherService: WeatherService, private fb: FormBuilder) {
 
     this.inputCity = this.fb.group({
       city: ['', [Validators.required, Validators.minLength(2)]]
-    });   
-  }  
+    });
+  }
 
   ngAfterViewInit() {
     this.videoElement.nativeElement.src = this.videoUrl;
   }
 
-  getWeather(){  
+  getWeather() {
+    this.weatherService.getData(this.inputCity.value.city).subscribe({
+      next: (city) => {
 
-      this.weatherService.getData(this.inputCity.value.city).subscribe((city ) => {{          
-
-        this.weather = city       
-        this.data = true;
+        this.weather = city
+        this.weatherIconUrl = environment.icon + city.weather[0].icon + ".png";                      
+        this.show = true;
         this.inputCity.reset();
-      }});
-  }  
+      },
+      error: (err) => {
+        alert(err)
+        this.inputCity.reset();
+      }
+    });
+  }
 }
