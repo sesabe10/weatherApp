@@ -13,7 +13,7 @@ export class WeatherComponent {
 
   @ViewChild('video', { static: false }) videoElement!: ElementRef;
 
-  videoUrl: string = 'assets/video/clouds.webm';
+  // videoUrl: string = 'assets/video/clouds.webm';
   inputCity: FormGroup;
   weather!: WeatherData;
   show: boolean = false;
@@ -26,9 +26,9 @@ export class WeatherComponent {
     });
   }
 
-  ngAfterViewInit() {
-    this.videoElement.nativeElement.src = this.videoUrl;
-  }
+  // ngAfterViewInit() {
+  //   this.videoElement.nativeElement.src = this.videoUrl;
+  // }
 
   getWeather() {
     this.weatherService.getData(this.inputCity.value.city).subscribe({
